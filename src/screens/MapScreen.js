@@ -26,6 +26,12 @@ function MapScreen({history}) {
     const [dialogOpen, setDialogOpen] = useState(false);
     const centerpos = [53.36745, 7.20778] 
 
+    const token = localStorage.getItem('jwtToken')
+    
+    if(!token) {
+        history.push('/')
+    }
+
     const { loading, data, subscribeToMore } = useQuery(GET_MAP, {
         onCompleted: () => {
             !data.getMap.map && setDialogOpen(true)

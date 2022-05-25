@@ -13,6 +13,12 @@ function ProfileScreen({history}) {
     const [partner, setPartner] = useState('')
     const [openConfirmation, setOpenConfirmation] = useState(false);
 
+    const token = localStorage.getItem('jwtToken')
+    
+    if(!token) {
+        history.push('/')
+    }
+
     const { loading, data } = useQuery(GET_USER_DETAILS, {
         onCompleted: () => {
             console.log(data)

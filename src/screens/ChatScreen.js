@@ -13,6 +13,12 @@ import {NEW_MESSAGE_SUB} from '../utils/graphql/subscriptions'
 function ChatScreen({history}) {
     const [dialogOpen, setDialogOpen] = useState(false);
     
+    const token = localStorage.getItem('jwtToken')
+    
+    if(!token) {
+        history.push('/')
+    }
+
     const messagesEndRef = useRef(null)
 
 

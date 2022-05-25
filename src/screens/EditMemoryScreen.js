@@ -31,6 +31,12 @@ function EditMemoryScreen({match}) {
     const id = match.params.id
     const history = useHistory()
 
+    const token = localStorage.getItem('jwtToken')
+    
+    if(!token) {
+        history.push('/')
+    }
+
     const [place, setPlace] = useState(initialState)
     const [openModal, setOpenModal] = useState(false)
 
