@@ -1,0 +1,156 @@
+
+ body, html {
+    background-color: #C9EBF4;
+    height: 100%;
+    margin: 0;
+    padding: 0
+}
+
+ .home {
+    background: url(../src/static/img/homeBackground.jpg) no-repeat center center fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+ }
+
+.home-header {
+    position: relative;
+    top: 15%;
+    margin-left: 10rem;
+}
+
+.home-header h1{
+    font-size: 72px; 
+    margin-bottom: 0;   
+}
+
+.btn {
+    font-weight: bold !important;
+    font-size: 18px !important;
+    padding: 0.5rem 2rem !important;
+    margin-right: 2rem !important;
+    margin-top: 1rem !important;
+}
+/* /////// PROFILE /////// */
+
+.card-3 {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    background-color: #EEEDED;
+  }
+
+.profile_details {
+    padding-right: 2rem;
+}
+
+.avatar:hover {
+    cursor: pointer
+}
+
+
+/* /////// CHAT /////// */
+
+.message-input {
+    display: flex;
+    justify-content: space-between;
+    background-color: #EEEDED;
+}
+
+.pic_message {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: auto 0;
+}
+
+.pic_mess_upload {
+    display: none 
+}
+
+.text_message {
+    width: 55rem;
+    padding: 1rem;
+}
+
+.chatmessage {
+    list-style-type: none
+}
+
+.chathistory {
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    height: 70vh;
+    background-color: #EEEDED;
+    overflow-y: scroll;
+}
+
+.left {
+    padding: 1px;
+    text-align: start;
+  }
+  
+.right {
+    padding: 1px;
+    text-align: end;
+}
+
+.usermessage {
+    background-color: lightgreen;
+    display: inline-flex;
+    border-radius: 10px;
+    padding: 5px 15px;
+    margin-top: 10px;
+    padding: 1px 15px;
+    text-decoration: none;
+}
+
+.partnermessage {
+    background-color: lightblue;
+    display: inline-flex;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 1px 15px;
+}
+
+.messagebody {
+    font-family: monospace;
+    font-size: 20px;
+    padding-right: 20px
+}
+
+.timestamp {
+    font-size: 12px;
+    margin-top: auto
+}
+
+.picme {
+    width: 100px;
+    border: 3px solid lightgreen;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer
+}
+  
+.picyou {
+    width: 100px;
+    border: 3px solid lightblue;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer
+}
+
+.Usercard {
+    border: 1px solid black;
+    margin-bottom: 5px
+}
+
+/* /////// MAP /////// */
+
+.mapcontainer{
+    height: 80vh;
+    width: 90%;
+    margin: 0 auto;
+}
