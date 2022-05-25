@@ -15,10 +15,6 @@ function ChatScreen({history}) {
     
     const messagesEndRef = useRef(null)
 
-  
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scroll({ top: 'scrollHeight', behavior: 'smooth' })
-    }
 
     console.log(messagesEndRef.current)
 
@@ -27,7 +23,6 @@ function ChatScreen({history}) {
     const { loading, data, subscribeToMore } = useQuery(GET_CHAT, {
         onCompleted: () => {
             !data.getChat.chat && setDialogOpen(true)
-            scrollToBottom()
         },
         onError: (e) => {
             console.log(e)
@@ -37,7 +32,7 @@ function ChatScreen({history}) {
 
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"})
-    },[data])
+    },[messagesEndRef, data])
 
     useEffect(() => {
         subscribeToMore({
@@ -67,7 +62,8 @@ function ChatScreen({history}) {
                 <>
                     <NoPartnerDialog dialogOpen={dialogOpen} setDialogOpen={setDialogOpen} history={history} />
                     <h3>Chat</h3>
-                    <div className="chathistory" ref={messagesEndRef}>
+                    <div className="chathistory" >
+                        <>
                         {data?.getChat?.chat?.messages.map(message =>
                         <li  key={message.id} className={message.user.id === data.getChat.id ? "left chatmessage" : "right chatmessage"}>
                             {(message.messagetype === "text") ?
@@ -77,8 +73,10 @@ function ChatScreen({history}) {
                             }
                         </li> 
                         
-                        
+                       
                         )}
+                        <div ref={messagesEndRef} />
+                        </>
                     </div>
                     {data && data.getChat && 
                         <div>
