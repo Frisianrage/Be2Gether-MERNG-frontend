@@ -41,7 +41,7 @@ export default function LoginScreen({history}) {
             history.push('/profile')
         },
         onError(err){
-            console.log(err)
+            console.log(JSON.stringify(err, null, 2))
         },
         variables: values
     })

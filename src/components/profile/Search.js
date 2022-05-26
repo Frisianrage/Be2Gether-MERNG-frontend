@@ -35,9 +35,10 @@ function Search({setPartner}) {
     return (
         <>
         {loading ? <Spinner loading={loading} /> :
-            <div className="partnersearch">
-                <input id="partnersearch" type="text" placeholder="Look for your partner" onChange={handleChange} name="partner" />
-                <Button variant="contained" onClick={handleClick}>Search</Button> 
+            <div className="partnersearch" style={{marginTop: "2rem"}}>
+                <h3>Look for your partner via email</h3>
+                <input style={{padding: "0.5rem 1rem"}}id="partnersearch" type="text" placeholder="Look for your partner" onChange={handleChange} name="partner" />
+                <Button variant="contained" size="small" style={{marginLeft: "1rem"}} onClick={handleClick}>Search</Button> 
             </div> 
         }  
         </>

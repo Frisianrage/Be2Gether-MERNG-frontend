@@ -32,6 +32,16 @@
     margin-right: 2rem !important;
     margin-top: 1rem !important;
 }
+
+.demo-btn {
+    font-weight: bold !important;
+    font-size: 18px !important;
+    padding: 0.5rem 5.1rem !important;
+    margin-right: 2rem !important;
+    margin-top: 1.5rem !important;
+}
+
+
 /* /////// PROFILE /////// */
 
 .card-3 {

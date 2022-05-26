@@ -10,10 +10,12 @@ import {GET_CHAT} from '../utils/graphql/queries'
 import {NEW_MESSAGE_SUB} from '../utils/graphql/subscriptions'
 
 
-function ChatScreen({history}) {
+function ChatScreen({match, history}) {
     const [dialogOpen, setDialogOpen] = useState(false);
     
     const token = localStorage.getItem('jwtToken')
+
+    const chatId = match.params.id
     
     if(!token) {
         history.push('/')
@@ -21,18 +23,20 @@ function ChatScreen({history}) {
 
     const messagesEndRef = useRef(null)
 
-
     console.log(messagesEndRef.current)
 
     console.log(messagesEndRef)
 
     const { loading, data, subscribeToMore } = useQuery(GET_CHAT, {
-        onCompleted: () => {
-            !data.getChat.chat && setDialogOpen(true)
+        onCompleted: (data) => {
+            !data.getChat.id && setDialogOpen(true)
+            console.log(data)
         },
-        onError: (e) => {
-            console.log(e)
+        onError: (err) => {
+            console.log(JSON.stringify(err, null, 2))
             history.push('/404')
+        }, variables: {
+            chatId
         }
     });
 

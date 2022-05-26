@@ -40,12 +40,6 @@ export const LOGIN_USER = gql`
       id
       email
       token
-      chat {
-        id
-      }
-      map {
-        id
-      }
     }
   }
 `;
@@ -103,56 +97,52 @@ export const UPDATE_USER_AVATAR = gql`
 `;
 
 export const REQUEST_CONNECTION = gql`
-  mutation($partnerId: ID!) {
-  requestConnection(partnerId: $partnerId){
+  mutation($connectionId: ID!) {
+  requestConnection(connectionId: $connectionId){
     id
-    email
-    partner {
-      user {
-        id
-      	firstname
-        lastname
-        email
-      }
-      status
+    persons {
+      id
+      firstname
+      lastname
+      email
     }
+    status
+    requester
   } 
-  }
+}
 `;
 
 export const ACCEPT_REQUEST_CONNECTION = gql`
-  mutation($partnerId: ID!) {
-    acceptRequestConnection(partnerId: $partnerId){
+  mutation($connectionId: ID!) {
+    acceptRequestConnection(connectionId: $connectionId){
     id
-    email
-    partner {
-      user {
+    persons {
         id
       	firstname
         lastname
         email
       }
       status
-    }
+      requester
+    
   } 
   }
 `;
 
 export const DELETE_CONNECTION = gql`
-  mutation($partnerId: ID!) {
-    deleteConnection(partnerId: $partnerId){
-    id
-    email
-    partner {
-      user {
+  mutation($connectionId: ID!) {
+    deleteConnection(connectionId: $connectionId){
+      id
+    persons {
         id
       	firstname
         lastname
         email
       }
       status
+      requester
     }
-  } 
+  
   }
 `;
 
@@ -172,39 +162,7 @@ export const NEW_MESSAGE = gql`
     }
 `
 
-export const CREATE_CHAT = gql`
-    mutation($partnerId: ID!){
-  createChat(partnerId: $partnerId){
-    id
-    user{
-      chat{id}
-      email
-    }
-    partner{
-      chat{id}
-      email
-    }
-  }
-}
-`
-
 // MAP MUTATIONS
-
-export const CREATE_MAP = gql`
-  mutation($partnerId: ID!){
-    createMap(partnerId: $partnerId){
-      id
-      user{
-        id 
-        email
-      }
-      partner{
-        id
-        email
-      }
-    }
-  }
-`
 
 export const CREATE_PLACE = gql`
   mutation($lat: String! 

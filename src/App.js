@@ -26,7 +26,7 @@ function App() {
             <Route exact path='/signup' component={RegisterScreen} />
             <Route exact path='/profile' component={ProfileScreen} />
             <Route exact path='/login' component={LoginScreen} />
-            <Route exact path='/chat' component={ChatScreen} />
+            <Route exact path='/chat/:id' component={ChatScreen} />
             <Route exact path='/map' component={MapScreen} />
             <Route exact path='/map/place/:id/edit' component={EditMemoryScreen} />
             <Route exact path="/404" component={PageNotFound} />

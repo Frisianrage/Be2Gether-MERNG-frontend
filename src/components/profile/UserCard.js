@@ -6,7 +6,7 @@ import { UPDATE_USER, UPDATE_USER_AVATAR } from '../../utils/graphql/mutations'
 import Spinner from '../Spinner'
 
 function UserCard({user}) {
-    
+    console.log(user)
     const [avatar, setAvatar] = useState(user.avatar)
     const [firstName, setFirstName] = useState(user.firstname)
     const [lastName, setLastName] = useState(user.lastname)
@@ -16,7 +16,11 @@ function UserCard({user}) {
     const [toggleDisable, setToggleDisable] = useState(true)
 
     const editProfile = () => {
-        setToggleDisable(!toggleDisable)
+        if(user.email === process.env.REACT_APP_DEMO_MAIL){
+            window.alert("This is just a demo! This function is not working here")
+        } else {
+         setToggleDisable(!toggleDisable)   
+        }
     }
 
     const [updateUser, {loading} ] = useMutation(UPDATE_USER, {

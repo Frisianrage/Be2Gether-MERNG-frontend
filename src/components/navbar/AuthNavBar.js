@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {useQuery} from '@apollo/client'
 import { Link } from 'react-router-dom';
 import {AuthContext} from '../../context/auth'
@@ -12,24 +12,30 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import { MAP_CHAT_CHECK } from '../../utils/graphql/queries'
+import { CONNECTION_CHECK } from '../../utils/graphql/queries'
 
 
 const AuthNavBar  = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
+  const [partner, setPartner] = useState()
+
   const { logout } = useContext(AuthContext)
 
-  const { data } = useQuery(MAP_CHAT_CHECK, {
-    onCompleted: () => {
-        if(!data.chat){
-          console.log('true')
-        }
+  const { data } = useQuery(CONNECTION_CHECK, {
+    onCompleted: (data) => {
+      setPartner({
+        user: data.connectionCheck.connections[0]
+    })
     },
-    onError: (e) => {
-        console.log(e)
+    onError: (err) => {
+       console.log(JSON.stringify(err, null, 2))
         //history.push('/404')
     }
-});
+  });
+
+  useEffect(()=>{
+        console.log(partner)
+    },[partner])
   
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -69,7 +75,7 @@ const AuthNavBar  = () => {
                 Profile
               </Button>
             </Link>
-            <Link to={'/chat'} style={{ textDecoration: 'none' }}>
+            <Link to={(partner?.user?.chat?.id !== "") ? (`/chat/${partner?.user?.chat?.id}`) : ('#')} style={{ textDecoration: 'none' }}>
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white !important' , display: 'flex' }}
@@ -77,7 +83,7 @@ const AuthNavBar  = () => {
                 Chat
               </Button>
             </Link>
-            <Link to={'/map'} style={{ textDecoration: 'none' }}>
+            <Link to={(data?.connections !== []) ? ('/map') : ('#')} style={{ textDecoration: 'none' }}>
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white !important' , display: 'flex' }}
@@ -133,7 +139,7 @@ const AuthNavBar  = () => {
                   Profile
                 </Button>
               </Link>
-              <Link to={(data?.chat) ? ('/chat') : ('#')} style={{ textDecoration: 'none' }}>
+              <Link to={(data?.connections !== []) ? ('/chat') : ('#')} style={{ textDecoration: 'none' }}>
                 <Button
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white !important' , display: 'flex' }}
@@ -141,7 +147,7 @@ const AuthNavBar  = () => {
                   Chat
                 </Button>
               </Link>
-              <Link to={(data?.map) ? ('/map') : ('#')} style={{ textDecoration: 'none' }}>
+              <Link to={(data?.connections !== []) ? ('/map') : ('#')} style={{ textDecoration: 'none' }}>
                 <Button
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white !important' , display: 'flex' }}

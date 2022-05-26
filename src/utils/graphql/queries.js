@@ -10,45 +10,57 @@ query ($email: String!){
     firstname
     lastname
     email
+    avatar{
+        name
+        file
+    }
   }
 }
 `
 
 export const GET_USER_DETAILS = gql`
-  query{
-    getUserDetails{
-        id
-        email
-        firstname
-        lastname
-        avatar{
-            file
-        }
-        partner {
-            user{
+    query{
+        getUserDetails{
+            id
+            email
+            firstname
+            lastname
+            avatar{
+                name
+                file
+            }
+            connections{
                 id
-                firstname
-                lastname
-                email
-                avatar{
-                    file
+                connectionType
+                persons{
+                    id
+                    firstname
+                    lastname
+                    email
+                    avatar {
+                        name
+                        file
+                    }
                 }
-                }
-            status
-        }
+                status
+                requester
+            }
         }
     }
 `;
 
-export const MAP_CHAT_CHECK = gql`
+export const CONNECTION_CHECK = gql`
     query{
-        mapChatCheck{
+        connectionCheck{
             id
-            chat{
+            connections {
                 id
-            }
-            map{
-                id
+                chat{
+                    id
+                }
+                map{
+                    id
+                }
             }
         }
     }
@@ -58,21 +70,17 @@ export const MAP_CHAT_CHECK = gql`
 // CHAT QUERIES
 
 export const GET_CHAT = gql`
-    query{
-        getChat{
+query ($chatId: ID!){
+    getChat(chatId: $chatId){
             id
-            firstname
-            chat {
-                id
-                messages {
-                    user {
-                        id
-                    }
-                    content
-                    messagetype
+            messages {
+                user {
                     id
-                    createdAt
                 }
+                content
+                messagetype
+                id
+                createdAt
             }
         }
     }

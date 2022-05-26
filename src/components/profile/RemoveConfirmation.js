@@ -7,8 +7,8 @@ function RemoveConfirmation({openConfirmation, setOpenConfirmation, handleRemove
         setOpenConfirmation(false)
     }
 
-    const handleAgree = () => {
-        handleRemove()
+    const handleAgree = (e) => {
+        handleRemove(e)
         setOpenConfirmation(false)
     }
 
