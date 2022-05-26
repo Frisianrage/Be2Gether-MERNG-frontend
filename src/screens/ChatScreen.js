@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState} from 'react'
+import React, { useContext, useEffect, useRef, useState} from 'react'
 import {useQuery} from '@apollo/client'
 import { Container } from '@mui/material';
 import Spinner from '../components/Spinner'
@@ -8,10 +8,12 @@ import TextMessage from '../components/chat/TextMessage'
 import PictureMessage from '../components/chat/PictureMessage'
 import {GET_CHAT} from '../utils/graphql/queries'
 import {NEW_MESSAGE_SUB} from '../utils/graphql/subscriptions'
+import {AuthContext} from '../context/auth'
 
 
 function ChatScreen({match, history}) {
     const [dialogOpen, setDialogOpen] = useState(false);
+    const { user } = useContext(AuthContext)
     
     const token = localStorage.getItem('jwtToken')
 
@@ -53,9 +55,7 @@ function ChatScreen({match, history}) {
               const newMessage = subscriptionData.data.newMessage;
               const updatedList = Object.assign({}, prev, {
                 getChat: {
-                    chat: {
-                        messages:[newMessage, ...prev.getChat.chat.messages]
-                    }
+                        messages:[newMessage, ...prev.getChat.messages]
                 }})
                 
               return updatedList 
@@ -74,12 +74,12 @@ function ChatScreen({match, history}) {
                     <h3>Chat</h3>
                     <div className="chathistory" >
                         <>
-                        {data?.getChat?.chat?.messages.map(message =>
-                        <li  key={message.id} className={message.user.id === data.getChat.id ? "left chatmessage" : "right chatmessage"}>
+                        {data?.getChat?.messages.map(message =>
+                        <li  key={message.id} className={message.user.id === user.id ? "left chatmessage" : "right chatmessage"}>
                             {(message.messagetype === "text") ?
-                                <TextMessage message={message} userId={data.getChat.id} />
+                                <TextMessage message={message} userId={user.id} />
                               :
-                                <PictureMessage message={message} userId={data.getChat.id} />    
+                                <PictureMessage message={message} userId={user.id} />    
                             }
                         </li> 
                         
@@ -90,7 +90,7 @@ function ChatScreen({match, history}) {
                     </div>
                     {data && data.getChat && 
                         <div>
-                            <MessageInput /> 
+                            <MessageInput chatId={chatId}/> 
                         </div>
                     }
                 </>

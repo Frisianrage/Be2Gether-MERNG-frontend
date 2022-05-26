@@ -150,8 +150,8 @@ export const DELETE_CONNECTION = gql`
 // CHAT MUTATIONS
 
 export const NEW_MESSAGE = gql`
-    mutation($content: String! $messagetype: String!){
-        createMessage(content: $content messagetype: $messagetype){
+    mutation($content: String! $messagetype: String! $chatId: ID!){
+        createMessage(content: $content messagetype: $messagetype chatId: $chatId){
             user {
               id 
               email

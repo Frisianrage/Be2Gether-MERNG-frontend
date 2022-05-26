@@ -7,7 +7,7 @@ import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import {NEW_MESSAGE} from '../../utils/graphql/mutations'
 
 
-const PictureMessageInput = () => {    
+const PictureMessageInput = ({chatId}) => {    
 
     const { user } = useContext(AuthContext)
     
@@ -34,7 +34,7 @@ const PictureMessageInput = () => {
 
         console.log('start of upload')
 
-        const storageRef = ref(storage, `${user.id}/profile/chat/${date}/${image.name}`)
+        const storageRef = ref(storage, `${user.id}/chat/${date}/${image.name}`)
         const uploadTask = uploadBytesResumable(storageRef, image, metadata);
           
         //initiates the firebase side uploading 
@@ -77,9 +77,11 @@ const PictureMessageInput = () => {
                 console.log('File available at', downloadURL);
                 
                 newMessage({ 
-                    variables: {
+                    variables: { 
                         content: downloadURL,
-                        messagetype: image.type
+                        messagetype: image.type,
+                        chatId
+
                     } 
                 })
             } 
