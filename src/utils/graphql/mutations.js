@@ -166,9 +166,11 @@ export const NEW_MESSAGE = gql`
 
 export const CREATE_PLACE = gql`
   mutation($lat: String! 
-          $long: String!){
+          $long: String!
+          $mapId: ID!){
     createPlace(lat: $lat 
                 long: $long
+                mapId: $mapId
       ){
       id
       lat

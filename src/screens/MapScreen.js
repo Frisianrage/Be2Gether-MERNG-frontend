@@ -22,9 +22,11 @@ L.Icon.Default.mergeOptions({
     shadowUrl
 });
 
-function MapScreen({history}) {
+function MapScreen({history, match}) {
     const [dialogOpen, setDialogOpen] = useState(false);
     const centerpos = [53.36745, 7.20778] 
+
+    const mapId = match.params.id
 
     const token = localStorage.getItem('jwtToken')
     
@@ -34,27 +36,29 @@ function MapScreen({history}) {
 
     const { loading, data, subscribeToMore } = useQuery(GET_MAP, {
         onCompleted: () => {
-            !data.getMap.map && setDialogOpen(true)
+            !data.getMap.id && setDialogOpen(true)
         },
         onError: (e) => {
             console.log(e)
             history.push('/404')
-        }     
+        },
+        variables: {
+            mapId
+        }
     })
 
     useEffect(() => {
         subscribeToMore({
             document: NEW_PLACE_SUB,
             updateQuery: (prev, { subscriptionData }) => {
-              if (!subscriptionData.data) return prev;
+                if (!subscriptionData.data) return prev;
 
-              const newPlace = subscriptionData.data.newPlace;
-              const updatedList = Object.assign({}, prev, {
-                getMap: {
-                    map: {
-                        places:[newPlace, ...prev.getMap.map.places]
+                const newPlace = subscriptionData.data.newPlace;
+                const updatedList = Object.assign({}, prev, {
+                    getMap: {
+                            places:[newPlace, ...prev.getMap.places]
                     }
-                }})
+                })
                 
               return updatedList 
             }
@@ -72,12 +76,12 @@ function MapScreen({history}) {
                 <h3 style={{marginLeft: "5rem"}}>Map</h3>
                 <MapContainer  className="mapcontainer" center={centerpos} zoom={5}>
                     <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/> 
-                    {data?.getMap?.map?.places?.map(place => (
+                    {data?.getMap?.places?.map(place => (
                         <div key={place.id}>
-                           <CustomMarker place={place} mapId={data.getMap.map.id} /> 
+                           <CustomMarker place={place} mapId={mapId} /> 
                         </div>
                     ))}
-                    <NewLocationMarker />
+                    <NewLocationMarker mapId={mapId} />
                 </MapContainer>
             </>)
         }

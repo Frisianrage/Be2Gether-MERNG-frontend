@@ -28,9 +28,9 @@ const initialState =  {
 
 
 function EditMemoryScreen({match}) {
-    const id = match.params.id
+    const {mapId, placeId} = match.params
     const history = useHistory()
-
+    console.log(match.params)
     const token = localStorage.getItem('jwtToken')
     
     if(!token) {
@@ -49,7 +49,7 @@ function EditMemoryScreen({match}) {
             console.log(JSON.stringify(err, null, 2))
         },
         variables: {
-            id: id
+            id: placeId
         },
         onCompleted(){
             setPlace(data.getPlace)
@@ -79,7 +79,7 @@ function EditMemoryScreen({match}) {
     }
 
     const handleClose = () => {
-        history.push("/map")
+        history.push(`/map/${mapId}`)
     }
     
     return (
@@ -195,12 +195,12 @@ function EditMemoryScreen({match}) {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    style={{overflowY: "scroll", height: "400px"}}
+                    style={{overflowY: "scroll"}}
                     variant="outlined"
                     required
                     fullWidth
                     multiline
-                    minRows="6"
+                    minRows="10"
                     id="body"
                     label="Memory"
                     name="body"

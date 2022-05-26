@@ -89,30 +89,27 @@ query ($chatId: ID!){
 // MAP QUERIES
 
 export const GET_MAP = gql`
-    query{
-        getMap{
+    query ($mapId: ID!){
+        getMap(mapId: $mapId){
             id
-            map{
+            places {
                 id
-                places {
-                    id
-                    city
-                    address
-                    country
-                    zip
-                    title
-                    body
-                    img {
-                        name, 
-                        type,
-                        size,
-                        file
-                    },
-                    lat
-                    long
-                    begin
-                    end
-                }
+                city
+                address
+                country
+                zip
+                title
+                body
+                img {
+                    name, 
+                    type,
+                    size,
+                    file
+                },
+                lat
+                long
+                begin
+                end
             }
         }
     }

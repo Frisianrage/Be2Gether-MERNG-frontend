@@ -6,7 +6,7 @@ import { Marker, Popup, useMapEvents } from 'react-leaflet'
 import {Button} from '@mui/material'
 import { CREATE_PLACE } from '../../utils/graphql/mutations'
 
-function NewLocationMarker() {
+function NewLocationMarker({ mapId }) {
     const history = useHistory()
 
     const initialState = {
@@ -28,16 +28,16 @@ function NewLocationMarker() {
 
     const [createPlace, {loading} ] = useMutation(CREATE_PLACE, {
         onError(err){
-            console.log(err)
           console.log(JSON.stringify(err, null, 2))
         },
         variables: {
             lat: JSON.stringify(position.lat),
-            long: JSON.stringify(position.lng)
+            long: JSON.stringify(position.lng),
+            mapId
         },
         onCompleted(data){
             const id = data.createPlace.id
-            history.push(`/map/place/${id}/edit`)
+            history.push(`/map/${mapId}/places/${id}/edit`)
         }
     })
 

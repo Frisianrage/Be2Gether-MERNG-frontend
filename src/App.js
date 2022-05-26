@@ -27,8 +27,8 @@ function App() {
             <Route exact path='/profile' component={ProfileScreen} />
             <Route exact path='/login' component={LoginScreen} />
             <Route exact path='/chat/:id' component={ChatScreen} />
-            <Route exact path='/map' component={MapScreen} />
-            <Route exact path='/map/place/:id/edit' component={EditMemoryScreen} />
+            <Route exact path='/map/:id' component={MapScreen} />
+            <Route exact path='/map/:mapId/places/:placeId/edit' component={EditMemoryScreen} />
             <Route exact path="/404" component={PageNotFound} />
             <Redirect path="*" to="/404" />
           </Switch>

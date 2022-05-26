@@ -83,7 +83,7 @@ const AuthNavBar  = () => {
                 Chat
               </Button>
             </Link>
-            <Link to={(data?.connections !== []) ? ('/map') : ('#')} style={{ textDecoration: 'none' }}>
+            <Link to={(partner?.user?.map?.id !== []) ? (`/map/${partner?.user?.map?.id}`) : ('#')} style={{ textDecoration: 'none' }}>
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white !important' , display: 'flex' }}
