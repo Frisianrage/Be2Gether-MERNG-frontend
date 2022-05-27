@@ -56,7 +56,11 @@ function UserCard({user}) {
     }
 
     const newAvatar = () => {
-       document.querySelector("div.avatar input").click()
+        if(user.email === process.env.REACT_APP_DEMO_MAIL){
+            window.alert("This is just a demo! This function is not working here")
+        } else {
+            document.querySelector("div.avatar input").click()   
+        }
     }
 
     const addAvatar = async (e) => {

@@ -85,7 +85,7 @@ function ChatScreen({match, history}) {
                     </div>
                     {data && data.getChat && 
                         <div>
-                            <MessageInput chatId={chatId}/> 
+                            <MessageInput user={user} chatId={chatId}/> 
                         </div>
                     }
                 </>

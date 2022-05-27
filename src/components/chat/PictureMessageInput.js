@@ -25,14 +25,14 @@ const PictureMessageInput = ({chatId}) => {
         const date = moment().format('L')
         
         const metadata = {
-          contentType: 'image/jpeg',
+            contentType: 'image/jpeg',
         };
 
         console.log('start of upload')
 
         const storageRef = ref(storage, `${user.id}/chat/${date}/${image.name}`)
         const uploadTask = uploadBytesResumable(storageRef, image, metadata);
-          
+            
         //initiates the firebase side uploading 
         uploadTask.on('state_changed',
             (snapshot) => {
@@ -85,7 +85,12 @@ const PictureMessageInput = ({chatId}) => {
     }
 
     const handleClick = () => {
-        document.querySelector("div.pic_mess_upload input").click()
+        if(user.email === process.env.REACT_APP_DEMO_MAIL){
+            window.alert("This is just a demo! This function is not working here")
+        } else {
+            document.querySelector("div.pic_mess_upload input").click()
+        }
+        
     }
 
     return (

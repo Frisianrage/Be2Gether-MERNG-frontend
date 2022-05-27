@@ -37,7 +37,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     );
   };
 
-export default function MemoryModal({openModal, setOpenModal, place}) {
+export default function MemoryModal({openModal, setOpenModal, place, mapId}) {
 
   return (
     <div>
@@ -73,7 +73,7 @@ export default function MemoryModal({openModal, setOpenModal, place}) {
         </DialogContent>
         <DialogActions>
             <Button autoFocus>
-                <Link to={`/map/place/${place.id}/edit`}  style={{textDecoration: "none", color: "#1976d2"}}>
+                <Link to={`/map/${mapId}/places/${place.id}/edit`}  style={{textDecoration: "none", color: "#1976d2"}}>
                         Edit
                 </Link>
             </Button>

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { MapContainer, TileLayer} from 'react-leaflet'
 import L from 'leaflet';
+import {AuthContext} from '../context/auth'
 import {GET_MAP} from '../utils/graphql/queries'
 import {NEW_PLACE_SUB} from '../utils/graphql/subscriptions'
 import Spinner from '../components/Spinner'
@@ -25,6 +26,8 @@ L.Icon.Default.mergeOptions({
 function MapScreen({history, match}) {
     const [dialogOpen, setDialogOpen] = useState(false);
     const centerpos = [53.36745, 7.20778] 
+
+    const { user } = useContext(AuthContext)
 
     const mapId = match.params.id
 
@@ -59,7 +62,6 @@ function MapScreen({history, match}) {
                             places:[newPlace, ...prev.getMap.places]
                     }
                 })
-                
               return updatedList 
             }
         })
@@ -74,14 +76,15 @@ function MapScreen({history, match}) {
             <>
                 <NoPartnerDialog dialogOpen={dialogOpen} setDialogOpen={setDialogOpen} history={history} />
                 <h3 style={{marginLeft: "5rem"}}>Map</h3>
-                <MapContainer  className="mapcontainer" center={centerpos} zoom={5}>
+                <MapContainer  className="mapcontainer" center={centerpos} zoom={3}>
+                <NewLocationMarker mapId={mapId} user={user}/>
                     <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/> 
                     {data?.getMap?.places?.map(place => (
                         <div key={place.id}>
-                           <CustomMarker place={place} mapId={mapId} /> 
+                           <CustomMarker place={place} mapId={mapId} user={user} /> 
                         </div>
                     ))}
-                    <NewLocationMarker mapId={mapId} />
+                    
                 </MapContainer>
             </>)
         }
@@ -91,3 +94,5 @@ function MapScreen({history, match}) {
 
 
 export default MapScreen
+
+//<NewLocationMarker mapId={mapId} user={user}/>

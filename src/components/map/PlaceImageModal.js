@@ -40,7 +40,11 @@ export default function PlaceImageModal({ placeId, openModal, setOpenModal}) {
   // Uploading photos to the storage and adding them to the database
 
   const handleClick = () => {
-    document.querySelector("div.pic_mess_upload input").click()
+    if(user.email === process.env.REACT_APP_DEMO_MAIL){
+      window.alert("This is just a demo! This function is not working here")
+    } else {
+        document.querySelector("div.pic_mess_upload input").click()
+    }
   }
 
   const [addPlaceImg, {addloading} ] = useMutation(ADD_PLACE_IMG, {
@@ -133,20 +137,24 @@ export default function PlaceImageModal({ placeId, openModal, setOpenModal}) {
   })
 
   const deletePhoto = (e) => {
-    const imageId = e.target.id
-    const imageName = e.target.parentElement.title
-
-    //deleting the image from firebase/storage
-    const desertRef = ref(storage, `${user.id}/places/${placeId}/${imageName}`);
-
-    deleteObject(desertRef).then(() => {
-      // File deleted successfully
-      console.log('File deleted')
-    }).catch((error) => {
-      console.log(error)
-      // Uh-oh, an error occurred!
-    });
-    deletePlaceImg({variables: {imgId: imageId, placeId: placeId}})    
+    if(user.email === process.env.REACT_APP_DEMO_MAIL){
+      window.alert("This is just a demo! This function is not working here")
+    } else {
+      const imageId = e.target.id
+      const imageName = e.target.parentElement.title
+  
+      //deleting the image from firebase/storage
+      const desertRef = ref(storage, `${user.id}/places/${placeId}/${imageName}`);
+  
+      deleteObject(desertRef).then(() => {
+        // File deleted successfully
+        console.log('File deleted')
+      }).catch((error) => {
+        console.log(error)
+        // Uh-oh, an error occurred!
+      });
+      deletePlaceImg({variables: {imgId: imageId, placeId: placeId}}) 
+    }
   }
 
   

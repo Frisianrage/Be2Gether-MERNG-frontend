@@ -6,20 +6,15 @@ import { Marker, Popup, useMapEvents } from 'react-leaflet'
 import {Button} from '@mui/material'
 import { CREATE_PLACE } from '../../utils/graphql/mutations'
 
-function NewLocationMarker({ mapId }) {
+function NewLocationMarker({ mapId, user }) {
     const history = useHistory()
 
-    const initialState = {
-        lat: "",
-        lng: ""
-    }
-
-    const [position, setPosition] = useState(initialState)
+    const [position, setPosition] = useState(null)
     
     useMapEvents({
         click(e) {
-            if(position.lat !== ""){
-            setPosition(initialState)
+            if(position !== null){
+            setPosition(null)
             } else {
               setPosition(e.latlng)  
             }
@@ -31,8 +26,8 @@ function NewLocationMarker({ mapId }) {
           console.log(JSON.stringify(err, null, 2))
         },
         variables: {
-            lat: JSON.stringify(position.lat),
-            long: JSON.stringify(position.lng),
+            lat: JSON.stringify(position?.lat),
+            long: JSON.stringify(position?.lng),
             mapId
         },
         onCompleted(data){
@@ -42,7 +37,11 @@ function NewLocationMarker({ mapId }) {
     })
 
     const handleClick = () => {
-        createPlace()
+        if(user.email === process.env.REACT_APP_DEMO_MAIL){
+            window.alert("This is just a demo! This function is not working here")
+        } else {
+            createPlace()
+        }
     }
 
     return position === null ? null : (

@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import {AuthContext} from '../context/auth'
 import PlaceImageModal from '../components/map/PlaceImageModal'
 import { useMutation, useQuery } from '@apollo/client'
 import { Button, Container, CssBaseline, FormControl, Grid, TextField, Typography } from '@mui/material';
@@ -30,6 +31,8 @@ const initialState =  {
 function EditMemoryScreen({match}) {
     const {mapId, placeId} = match.params
     const history = useHistory()
+
+    const { user } = useContext(AuthContext)
     
     const token = localStorage.getItem('jwtToken')
     
@@ -75,7 +78,12 @@ function EditMemoryScreen({match}) {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        updatePlace()
+        if(user.email === process.env.REACT_APP_DEMO_MAIL){
+          window.alert("This is just a demo! This function is not working here")
+        } else {
+          updatePlace()
+        }
+       
     }
 
     const handleClose = () => {
