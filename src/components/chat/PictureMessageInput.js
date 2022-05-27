@@ -14,9 +14,6 @@ const PictureMessageInput = ({chatId}) => {
     const [newMessage] = useMutation(NEW_MESSAGE, {
         onError(err){
             console.log(JSON.stringify(err, null, 2))
-        },
-        onCompleted(data){
-            console.log(data)
         }
     });
 
@@ -26,8 +23,7 @@ const PictureMessageInput = ({chatId}) => {
         const image = Object.values(files)[0]
 
         const date = moment().format('L')
-        console.log(image)
-        console.log(date)
+        
         const metadata = {
           contentType: 'image/jpeg',
         };

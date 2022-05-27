@@ -23,9 +23,6 @@ function ProfileScreen({history}) {
     }
 
     const { loading, data } = useQuery(GET_USER_DETAILS, {
-        onCompleted: (data) => {
-            console.log(data)
-        },
         onError: (err) => {
             console.log(JSON.stringify(err, null, 2))
             history.push('/404')
@@ -89,7 +86,6 @@ function ProfileScreen({history}) {
         acceptRequestConnection({variables: {
             connectionId: e.target.id} 
         })
-        console.log(e.target.id)
     }
     
     const handleRemove = (e) => {
@@ -97,7 +93,6 @@ function ProfileScreen({history}) {
         if(data.getUserDetails?.email === process.env.REACT_APP_DEMO_MAIL){
             window.alert("This is just a demo! This function is not working here")
         } else {
-            console.log(partner.connectionId)
             deleteConnection({variables: {
                 connectionId: partner.connectionId} 
             })

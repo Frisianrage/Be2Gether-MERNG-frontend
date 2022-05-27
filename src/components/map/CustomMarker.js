@@ -11,7 +11,7 @@ function CustomMarker({place, mapId}) {
 
     const [deletePlace, {loading}] = useMutation(DELETE_PLACE, {
         onError(err){
-            console.log(err)
+            console.log(JSON.stringify(err, null, 2))
         },
         variables: {
             placeId: place.id,

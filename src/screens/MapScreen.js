@@ -38,8 +38,8 @@ function MapScreen({history, match}) {
         onCompleted: () => {
             !data.getMap.id && setDialogOpen(true)
         },
-        onError: (e) => {
-            console.log(e)
+        onError: (err) => {
+            console.log(JSON.stringify(err, null, 2))
             history.push('/404')
         },
         variables: {

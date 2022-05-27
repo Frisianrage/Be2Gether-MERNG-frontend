@@ -42,7 +42,6 @@ export default function RegisterScreen({history}) {
   
   const [addUser, {loading} ] = useMutation(REGISTER_USER, {
       update(proxy, result){
-        console.log(result.data.register)
           login(result.data.register)
           history.push('/profile')
       },

@@ -11,7 +11,7 @@ const MessageInput = ({chatId}) => {
         e.preventDefault() 
         setTextValue(e.target.value) 
     }
-    console.log(chatId)
+    
     const [newMessage] = useMutation(NEW_MESSAGE,{
         onError(err){
             console.log(JSON.stringify(err, null, 2))

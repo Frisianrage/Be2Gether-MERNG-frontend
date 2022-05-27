@@ -8,13 +8,12 @@ import {GET_USER_BY_EMAIL} from '../../utils/graphql/queries'
 function Search({setPartner}) {
     const [email, setEmail]= useState('')
 
-    const [getUserByEmail, { loading, error, data}] = useLazyQuery(GET_USER_BY_EMAIL, {
+    const [getUserByEmail, { loading, data}] = useLazyQuery(GET_USER_BY_EMAIL, {
+        onError(err){
+            console.log(JSON.stringify(err, null, 2))
+        },
         variables: { email }
     });
-
-    if(error){
-        console.log(error)
-    }
 
     useEffect(()=>{
         if(data){

@@ -6,7 +6,7 @@ import { UPDATE_USER, UPDATE_USER_AVATAR } from '../../utils/graphql/mutations'
 import Spinner from '../Spinner'
 
 function UserCard({user}) {
-    console.log(user)
+    
     const [avatar, setAvatar] = useState(user.avatar)
     const [firstName, setFirstName] = useState(user.firstname)
     const [lastName, setLastName] = useState(user.lastname)

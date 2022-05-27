@@ -30,7 +30,7 @@ const initialState =  {
 function EditMemoryScreen({match}) {
     const {mapId, placeId} = match.params
     const history = useHistory()
-    console.log(match.params)
+    
     const token = localStorage.getItem('jwtToken')
     
     if(!token) {

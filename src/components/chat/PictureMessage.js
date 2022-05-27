@@ -7,7 +7,6 @@ function PictureMessage({message, userId}) {
 
     const handleClick = () => {
         setOpenModal(true)
-        console.log("Here comes the picture in big!!!")
     }
     
     return (

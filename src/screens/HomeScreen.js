@@ -27,7 +27,6 @@ function HomeScreen({history}) {
 
   useEffect(() => {
     if(user){
-      console.log(user)
         history.push('/profile')
     }
   }, [user,history])

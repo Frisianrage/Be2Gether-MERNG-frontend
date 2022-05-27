@@ -38,7 +38,6 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   };
 
 export default function MemoryModal({openModal, setOpenModal, place}) {
-  console.log(place)
 
   return (
     <div>

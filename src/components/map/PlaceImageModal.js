@@ -26,7 +26,6 @@ export default function PlaceImageModal({ placeId, openModal, setOpenModal}) {
       console.log(JSON.stringify(err, null, 2))
     },
     onCompleted(){
-      console.log('done')
       setImages(data.getPlaceImages)
     }
   })
@@ -49,7 +48,6 @@ export default function PlaceImageModal({ placeId, openModal, setOpenModal}) {
       console.log(JSON.stringify(err, null, 2))
     },
     onCompleted(){
-      console.log('refetching')
       refetch()
     }
   })

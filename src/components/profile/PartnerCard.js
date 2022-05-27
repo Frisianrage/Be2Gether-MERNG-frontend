@@ -2,7 +2,7 @@ import React from 'react'
 import { Avatar, Container,TextField, Box} from '@mui/material';
 
 function PartnerCard({user}) {
-    console.log(user)
+    
     return (
         <div className="card-3">
             <Container style={{display: 'flex', justifyContent: 'space-between', padding: '1rem'}}>

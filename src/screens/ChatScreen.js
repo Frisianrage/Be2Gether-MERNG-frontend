@@ -25,14 +25,9 @@ function ChatScreen({match, history}) {
 
     const messagesEndRef = useRef(null)
 
-    console.log(messagesEndRef.current)
-
-    console.log(messagesEndRef)
-
     const { loading, data, subscribeToMore } = useQuery(GET_CHAT, {
         onCompleted: (data) => {
             !data.getChat.id && setDialogOpen(true)
-            console.log(data)
         },
         onError: (err) => {
             console.log(JSON.stringify(err, null, 2))

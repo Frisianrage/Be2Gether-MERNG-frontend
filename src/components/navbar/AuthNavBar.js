@@ -32,10 +32,6 @@ const AuthNavBar  = () => {
         //history.push('/404')
     }
   });
-
-  useEffect(()=>{
-        console.log(partner)
-    },[partner])
   
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
