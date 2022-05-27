@@ -93,7 +93,7 @@ function EditMemoryScreen({match}) {
     return (
         <Container component="main">
           <Spinner loading={loading || updateLoading} />
-          <PlaceImageModal placeId={place.id} openModal={openModal} setOpenModal={setOpenModal} />
+          <PlaceImageModal placeId={placeId} openModal={openModal} setOpenModal={setOpenModal} />
           <>
             <div style={{display: "flex", justifyContent: "space-between", paddingTop: "2rem"}}>
                 <Typography component="h1" variant="h5" style={{fontWeight: 'bold', fontSize: '28px', width: "75%"}}>

@@ -60,7 +60,7 @@ export default function MemoryModal({openModal, setOpenModal, place, mapId}) {
           </Typography>
           <ImageList variant="masonry" cols={2} gap={8}>
             {place.img.map((image) => (
-              <ImageListItem key={image.id}>
+              <ImageListItem key={image.name}>
                 <img
                   src={`${image.file}?w=248&fit=crop&auto=format`}
                   srcSet={`${image.file}?w=248&fit=crop&auto=format&dpr=2 2x`}
