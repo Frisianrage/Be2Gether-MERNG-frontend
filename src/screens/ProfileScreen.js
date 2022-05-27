@@ -94,11 +94,12 @@ function ProfileScreen({history}) {
     
     const handleRemove = (e) => {
         e.preventDefault()
-        if(data.getUserDetails?.email !== process.env.REACT_APP_DEMO_MAIL){
+        if(data.getUserDetails?.email === process.env.REACT_APP_DEMO_MAIL){
             window.alert("This is just a demo! This function is not working here")
         } else {
+            console.log(partner.connectionId)
             deleteConnection({variables: {
-                partnerId: partner.user.id} 
+                connectionId: partner.connectionId} 
             })
             setPartner('')   
         }

@@ -97,8 +97,8 @@ export const UPDATE_USER_AVATAR = gql`
 `;
 
 export const REQUEST_CONNECTION = gql`
-  mutation($connectionId: ID!) {
-  requestConnection(connectionId: $connectionId){
+  mutation($partnerId: ID!) {
+  requestConnection(partnerId: $partnerId){
     id
     persons {
       id
@@ -133,14 +133,6 @@ export const DELETE_CONNECTION = gql`
   mutation($connectionId: ID!) {
     deleteConnection(connectionId: $connectionId){
       id
-    persons {
-        id
-      	firstname
-        lastname
-        email
-      }
-      status
-      requester
     }
   
   }
