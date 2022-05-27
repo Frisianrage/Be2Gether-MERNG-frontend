@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {useQuery} from '@apollo/client'
 import { Link } from 'react-router-dom';
 import {AuthContext} from '../../context/auth'
