@@ -39,12 +39,12 @@ function HomeScreen({history}) {
           <h3>The place for couples in long distance relationships</h3>
           <div>
           <Link to={'/login'} style={{ textDecoration: 'none' }}>
-            <Button variant="contained" size="large" href="/login" className="btn">
+            <Button variant="contained" size="large" className="btn">
               Login
             </Button>
           </Link>
-          <Link to={'/login'} style={{ textDecoration: 'none' }}>
-            <Button variant="contained" size="large" href="/signup" className="btn">
+          <Link to={'/signup'} style={{ textDecoration: 'none' }}>
+            <Button variant="contained" size="large" className="btn">
               SignUp
             </Button>
           </Link>
