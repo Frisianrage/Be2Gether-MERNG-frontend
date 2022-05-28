@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Be2Gether - a social media app for couples in long distance relationships
+
+[Link](https://be2gether.netlify.app/) to the live project
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
