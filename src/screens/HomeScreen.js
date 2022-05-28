@@ -1,8 +1,9 @@
-import React, { useContext, useEffect} from 'react'
-import {useMutation} from '@apollo/client'
-import {Button} from '@mui/material';
-import {AuthContext} from '../context/auth'
-import {LOGIN_USER} from '../utils/graphql/mutations'
+import React, { useContext, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useMutation } from '@apollo/client'
+import { Button } from '@mui/material';
+import { AuthContext } from '../context/auth'
+import { LOGIN_USER } from '../utils/graphql/mutations'
 
 function HomeScreen({history}) {
   const { user, login } = useContext(AuthContext)
@@ -37,8 +38,16 @@ function HomeScreen({history}) {
           <h1 >Be2Gether</h1>
           <h3>The place for couples in long distance relationships</h3>
           <div>
-           <Button variant="contained" size="large" href="/login" className="btn">Login</Button>
-          <Button variant="contained" size="large" href="/signup" className="btn">SignUp</Button>
+          <Link to={'/login'} style={{ textDecoration: 'none' }}>
+            <Button variant="contained" size="large" href="/login" className="btn">
+              Login
+            </Button>
+          </Link>
+          <Link to={'/login'} style={{ textDecoration: 'none' }}>
+            <Button variant="contained" size="large" href="/signup" className="btn">
+              SignUp
+            </Button>
+          </Link>
           <div>
            <Button variant="outlined" color="secondary" size="large" className="demo-btn" onClick={demoHandler}>Take a demo</Button> 
           </div> 
