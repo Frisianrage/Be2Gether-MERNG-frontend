@@ -10,7 +10,7 @@
 
 ## General Info
 
-Be2Gether is a social media app for couples in long distance relationships. User can login into their profile and connect to their partner. The app includes a chat and^a world map where they can mark for example places they visited together and share their memories in text in images. This repo contains the frontend of Applicate.
+Be2Gether is a social media app for couples in long distance relationships. User can login into their profile and connect to their partner. The app includes a chat and^a world map where they can mark for example places they visited together and share their memories in text in images. This repo contains the frontend of Be2Gether.
 
 ### Screenshot
 
