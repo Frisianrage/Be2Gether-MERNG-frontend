@@ -1,74 +1,64 @@
-# Be2Gether - a social media app for couples in long distance relationships
+# Be2Gether-MERNG
 
 [Link](https://be2gether.netlify.app/) to the live project
 
-## Getting Started with Create React App
+## Table of contents
+* [General Info](#general-info)
+* [Technologies](#technologies)
+* [Backend](#backend)
+* [Setup](#setup)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## General Info
 
-## Available Scripts
+Be2Gether is a social media app for couples in long distance relationships. User can login into their profile and connect to their partner. The app includes a chat and^a world map where they can mark for example places they visited together and share their memories in text in images. This repo contains the frontend of Applicate.
 
-In the project directory, you can run:
+### Screenshot
 
-### `npm start`
+![screenshot 1](public/thumbnail.JPG)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies
 
-### `npm test`
+This project is created with:
+* @apollo/client version: 3.3.21,
+* @emotion/react version: 11.8.2,
+* @emotion/styled version: 11.8.1,
+* @mui/icons-material version: 5.5.0,
+* @mui/material version: 5.5.0,
+* @mui/styles version: 5.5.0,
+* firebase version: 9.8.1,
+* graphql version: 15.5.1,
+* jwt-decode version: 3.1.2,
+* leaflet version: 1.7.1,
+* leaflet-control-geocoder version: 2.3.0,
+* moment version: 2.29.1,
+* react version: 17.0.2,
+* react-dom version: 17.0.2,
+* react-file-base64 version: 1.0.3,
+* react-leaflet version: 3.2.1,
+* react-leaflet-search version: 2.0.1,
+* react-router-dom version: 5.2.0,
+* react-scripts version: 4.0.3,
+* subscriptions-transport-ws version: 0.9.19
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Backend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Here is the link to the [backend repo](https://github.com/Frisianrage/Be2Gether-MERNG-backend).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Clone the repository from GitHub.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+$ git clone https://github.com/Frisianrage/Be2Gether-MERNG-frontend.git
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Install Dependencies and Run the Server
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+$ npm install
+$ npm start
+```
